@@ -58,7 +58,7 @@ for id in id_data:
       response=requests.get(story_url,headers=headers)
       story_data=response.json()
       if story_data and "title" in story_data:
-        print(story_data["title"])
+        
         stories.append(story_data)
  
     except Exception as e:
@@ -97,4 +97,8 @@ with open(filename,"w") as file:
   json.dump(all_stories,file,indent=4)
 
 print(f"Total stories collected: {len(all_stories)}")
+print("Stories per category:")
+
+for category,count in category_counts.items():
+  print(f"{category}:{count}")
 print(f"Data saved to {filename}")
