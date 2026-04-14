@@ -49,6 +49,8 @@ category_counts={
 
 stories=[]
 
+#Extracting each id story
+
 for id in id_data:
     
     story_url=f"https://hacker-news.firebaseio.com/v0/item/{id}.json"
@@ -62,7 +64,7 @@ for id in id_data:
     except Exception as e:
       print(f"Exception occured as {e}")
 
-
+#extracting the required fileds
 
 all_stories=[]
 for story in stories[:500]:
@@ -85,6 +87,7 @@ for story in stories[:500]:
                 print(f"{category} category completed. Waiting 2 seconds...")
                 time.sleep(2)
 
+#Saving the data into a json file in data folder
 
 if not os.path.exists("data"):
          os.makedirs("data")
