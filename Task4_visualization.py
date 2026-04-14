@@ -10,6 +10,9 @@ sorted=df.sort_values("score",ascending=False).head(10)
 sorted["title"] = sorted["title"].apply(
     lambda x: x[:50] + "..." if len(x) > 50 else x
 )
+
+#horizontalbar garaph
+
 plt.barh(sorted["title"],sorted["score"])
 plt.xlabel("score")
 plt.ylabel("Title")
@@ -26,12 +29,17 @@ colors={
     "entertainment":"skublue"
 
 }
+
+#bargraph
+
 plt.bar(category.keys(),category.values(),color=["red","green","blue","orange","green","skyblue"])
 plt.xlabel("Categroies")
 plt.ylabel("No of stories")
 plt.title("Stories per Category")
 plt.savefig("output/chart2_categories.png")
 plt.show()
+
+#scatter plot
 
 popular=df[df["is_popular"]==True]
 notpopualr=df[df["is_popular"]==False]
@@ -70,21 +78,13 @@ axes[1].set_title("Stories per Category")
 axes[1].set_xlabel("Category")
 axes[1].set_ylabel("Count")
 
-
-
-
 axes[2].scatter(popular["score"], popular["num_comments"], color="red", label="Popular")
 axes[2].scatter(notpopualr["score"], notpopualr["num_comments"], color="green", label="Not Popular")
-
 axes[2].set_title("Score vs Comments")
 axes[2].set_xlabel("Score")
 axes[2].set_ylabel("Comments")
 axes[2].legend()
 
-
 plt.tight_layout()
-
-
 plt.savefig("output/dashboard.png")
-
 plt.show()
